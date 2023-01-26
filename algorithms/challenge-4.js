@@ -11,12 +11,22 @@
 function withdraw(amount) {
     let bills = [0, 0, 0];
     bills[0] = Math.floor(amount / 100)
-    amount += amount % 100;
+    amount += bills[0] % 100;
     bills[1] = Math.floor(amount / 50)
-    amount += amount % 50;
+    amount += bills[1] % 50;
     bills[2] = Math.floor(amount / 20)
-    amount += amount % 20;
+    amount += bills[2] % 20;
     return bills;
+}
+// OR
+function withdraw(amount){
+    const noOf100s = Math.floor(amount / 100);
+    amount -= noOf100s * 100;
+    const noOf50s = Math.floor(amount / 50);
+    amount -= noOf50s * 50;
+    const noOf20s = Math.floor(amount / 20);
+    amount -= noOf20s * 20;
+    return [noOf100s, noOf50s, noOf20s];
 }
 
 module.exports = withdraw
